@@ -64,24 +64,24 @@
             </div>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-single-02"></i>
-              <span>Mi perfil</span>
+              <span>My profile</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
-              <span>Configuracion</span>
+              <span>Settings</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-calendar-grid-58"></i>
-              <span>Actividad</span>
+              <span>Activity</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-support-16"></i>
-              <span>Soporte</span>
+              <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#!" class="dropdown-item">
               <i class="ni ni-user-run"></i>
-              <span>Salir</span>
+              <span>Logout</span>
             </a>
           </div>
         </li>
