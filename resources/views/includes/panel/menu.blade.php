@@ -2,22 +2,22 @@
 <h6 class="navbar-heading text-muted">Gestionar datos</h6>
 <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="./index.html">
+      <a class="nav-link" href="/dashboard">
         <i class="ni ni-tv-2 text-blue"></i> Home
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="./examples/icons.html">
+      <a class="nav-link" href="/specialties">
         <i class="ni ni-favourite-28 text-green"></i> Especialidades
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="./examples/maps.html">
+      <a class="nav-link" href="/doctors">
         <i class="ni ni-single-02 text-green"></i> Medicos
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="./examples/profile.html">
+      <a class="nav-link" href="/patients">
         <i class="ni ni-satisfied text-green"></i> Pacientes
       </a>
     </li>

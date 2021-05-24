@@ -31,3 +31,8 @@ Route::post('/specialties/create', 'App\Http\Controllers\SpecialtyController@sto
 Route::put('/specialties/{specialty}', 'App\Http\Controllers\SpecialtyController@update');
 Route::delete('/specialties/{specialty}/delete', 'App\Http\Controllers\SpecialtyController@destroy');
 
+// # Rutas Asociadas al CRUD de Specialty 
+Route::resource('doctors','App\Http\Controllers\DoctorController');
+
+
+
