@@ -27,6 +27,7 @@
 <body>
   <!-- Sidenav -->
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    
     <div class="container-fluid">
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +64,7 @@
               <h6 class="text-overflow m-0">Bienvenido!</h6>
             </div>
             <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-single-02"></i>
-              <span>Mi Perfil</span>
+              <i class="ni ni-single-02"></i>              
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
@@ -79,10 +79,15 @@
               <span>Soporte</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-user-run"></i>
-              <span>Salir</span>
-            </a>
+            <form class="dropdown-item" method="POST" action="{{ route('logout') }}">
+                @csrf
+                <i class="ni ni-button-power text-red m-0"></i>
+                <x-jet-dropdown-link href="{{ route('logout') }}"                    
+                        onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-jet-dropdown-link>              
+            </form>
           </div>
         </li>
       </ul>
@@ -146,27 +151,41 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Bienvenido!</h6>
               </div>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-single-02"></i>
-                <span>My profile</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-settings-gear-65"></i>
-                <span>Settings</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>Activity</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-support-16"></i>
-                <span>Support</span>
-              </a>
+              <span class="dropdown-item">
+                <i class="ni ni-single-02 m-0"></i>
+                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                    {{ __('Perfil') }}
+                </x-jet-dropdown-link>                 
+              </span>
+              <span class="dropdown-item">
+                <i class="ni ni-settings-gear-65 m-0"></i>
+                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                    {{ __('Configuracion') }}
+                </x-jet-dropdown-link>                 
+              </span>
+              <span class="dropdown-item">
+                <i class="ni ni-calendar-grid-58 m-0"></i>
+                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                    {{ __('Actividad') }}
+                </x-jet-dropdown-link>                 
+              </span>
+              <span class="dropdown-item">
+                <i class="ni ni-support-16 m-0"></i>
+                <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                    {{ __('Soporte') }}
+                </x-jet-dropdown-link>                 
+              </span>
               <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
-                <i class="ni ni-button-power text-red"></i>
-                <span>Logout</span>
-              </a>
+                <form class="dropdown-item" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <i class="ni ni-button-power text-red m-0"></i>
+                    <x-jet-dropdown-link href="{{ route('logout') }}"                    
+                            onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-jet-dropdown-link>
+                  
+                </form>
             </div>
           </li>
         </ul>

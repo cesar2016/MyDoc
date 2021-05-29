@@ -11,10 +11,10 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Ingresar nuevo medico </h3>
+              <h3 class="mb-0">Ingresar nuevo paciente </h3>
             </div>
             <div class="col text-right">
-              <a href="{{url('/doctors')}}" class="btn btn-sm btn-default">
+              <a href="{{url('/patients')}}" class="btn btn-sm btn-default">
                  Cancelar y volver 
               </a>
             </div>
@@ -31,11 +31,11 @@
           </ul>
               
           @endif
-          <form action="{{url('/doctors')}}" method="POST" >
+          <form action="{{url('/patients')}}" method="POST" >
              @csrf
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputEmail4">Nombre del medico</label>
+                <label for="inputEmail4">Nombre del paciente</label>
                 <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="Nombre del medico">
               </div>
               <div class="form-group col-md-6">
@@ -57,7 +57,7 @@
               <div class="form-group col-md-6">
                 <label for="password">Contraseña</label>
                 <input type="text" name="password" class="form-control" value="{{ (Str::random(8)) }}">                
-              </div> 
+              </div>                           
             </div>            
             <button type="submit" class="btn btn-primary">Guardar</button>              
           </form>

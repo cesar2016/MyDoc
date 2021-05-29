@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('dni')->nullable();
             $table->string('adress')->nullable();
             $table->string('phone')->nullable();
-            $table->string('role'); // Andmin, patient, Doc //
+            $table->string('role')->nullable();// admin, patient, doctor //
 
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

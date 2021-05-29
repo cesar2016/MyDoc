@@ -22,17 +22,34 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// # Rutas Asociadas al CRUD de Specialty 
-Route::get('/specialties','App\Http\Controllers\SpecialtyController@index');
-Route::get('/specialties/create', 'App\Http\Controllers\SpecialtyController@create'); //Form Registro
-Route::get('/specialties/{specialty}/edit', 'App\Http\Controllers\SpecialtyController@edit');
 
-Route::post('/specialties/create', 'App\Http\Controllers\SpecialtyController@store'); //Envio del registro
-Route::put('/specialties/{specialty}', 'App\Http\Controllers\SpecialtyController@update');
-Route::delete('/specialties/{specialty}/delete', 'App\Http\Controllers\SpecialtyController@destroy');
-
+// # Rutas agrupadas para el ADMIN 
+Route::middleware(['auth', 'admin'])->group(function () { 
 // # Rutas Asociadas al CRUD de Specialty 
-Route::resource('doctors','App\Http\Controllers\DoctorController');
+Route::get('/specialties','App\Http\Controllers\Admin\SpecialtyController@index');
+Route::get('/specialties/create', 'App\Http\Controllers\Admin\SpecialtyController@create'); //Form Registro
+Route::get('/specialties/{specialty}/edit', 'App\Http\Controllers\Admin\SpecialtyController@edit');
+
+Route::post('/specialties/create', 'App\Http\Controllers\Admin\SpecialtyController@store'); //Envio del registro
+Route::put('/specialties/{specialty}', 'App\Http\Controllers\Admin\SpecialtyController@update');
+Route::delete('/specialties/{specialty}/delete', 'App\Http\Controllers\Admin\SpecialtyController@destroy');
+
+// # Rutas Asociadas al CRUD de Doctor 
+Route::resource('doctors','App\Http\Controllers\Admin\DoctorController');
+
+// # Rutas Asociadas al CRUD de Patients 
+Route::resource('patients','App\Http\Controllers\Admin\PatientController');
+});
+
+// # Rutas agrupadas para el DORCTOR
+Route::middleware(['auth', 'doctor'])->group(function () {
+    // # Rutas Asociadas al CRUD de Specialty 
+    Route::get('/schedule', 'App\Http\Controllers\Doctor\ScheduleController@edit');
+    Route::post('/schedule', 'App\Http\Controllers\Doctor\ScheduleController@store');
+ 
+});
+
+
 
 
 
