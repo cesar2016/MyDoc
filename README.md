@@ -1,15 +1,14 @@
 <p align="center">
  <img src="https://i.postimg.cc/13xWgVdN/medico.png" alt="Build Status">
-    <p align="center">
-        <h1> ## MyDoc</h1>
-    </p>
+    <h1 align="center">
+         My DOC
+    </h1>
 </p>
 
- 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
  
 
-## My Doc
+## My Doc  
 
 Es una App para web y android, creada en "Laravel-7", gestiona la administracion de consultorios medicos, practica, rapida e intuitiva
 
