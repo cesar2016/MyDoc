@@ -2,6 +2,11 @@
 
 @section('content')  
 
+@section('styles')
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">    
+@endsection
+
 <div class="row">
    
     <div class="col-xl-12 mb-5 mb-xl-0">
@@ -58,6 +63,15 @@
                 <input type="text" name="password" class="form-control" value="">
                 <p><small>Ingrese un valor si desea modificar la clave</small></p>
               </div> 
+              <div class="form-group col-md-6">
+                <label for="specialties">Especialidades del Medico</label>
+                <select name="specialties[]" id="specialties" class="form-control selectpicker" data-style="btn-outline-success" title="Seleccione una o varias" multiple >
+                  @foreach ($specialties as $specialtie)
+                  <option value="{{$specialtie->id}}">{{$specialtie->name}}</option>
+                      
+                  @endforeach
+                </select>
+              </div>
             </div>            
             <button type="submit" class="btn btn-primary">Guardar</button>              
           </form>
@@ -66,6 +80,23 @@
     </div>
     
 </div>
+
     
 @endsection
+
+@section('scripts')
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>    
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+<script>
+  $(document).ready(()=> {
+    $('#specialties').selectpicker('val', @json($specialties_ids));
+    
+  });
+  
+  
+</script>
+@endsection
+ 
  

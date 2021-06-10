@@ -6,38 +6,64 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\WorkDay;
+use Carbon\Carbon;
+
+use function PHPSTORM_META\map;
 
 class ScheduleController extends Controller
 {
+    private $days = ['Lunes', 'Marter', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
     public function edit()
     {
-        $days = ['Lunes', 'Marter', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-        return view('/schedule', compact('days'));
+        $workDays = WorkDay::where('user_id', auth()->user()->id)->get();       
+
+        if(count($workDays) > 0 ){
+
+            $workDays->map(function($workDay){
+                $workDay->morning_start = (new Carbon($workDay->morning_start))->format('g:i A');
+                $workDay->morning_end = (new Carbon($workDay->morning_end))->format('g:i A');
+    
+                $workDay->afternoon_start = (new Carbon($workDay->afternoon_start))->format('g:i A'); 
+                $workDay->afternoon_end = (new Carbon($workDay->afternoon_end))->format('g:i A'); 
+                return $workDay;
+    
+            });
+        }else{
+            $workDays = collect();
+            for ($i=0; $i <7 ; $i++) { 
+                $workDays->push(new WorkDay());
+            }
+        }
+        
+        
+        //dd($workDays->toArray());
+        $days = $this->days;
+        return view('/schedule', compact('workDays','days'));
     }
     public function store(Request $request)
     {
          //dd($request->all());
-         $active = $request->input('active') ?: [];
-
-         /* if($active == null ){
-             $active = [];
-         } */
-
+         $days = $this->days;
+         $active = $request->input('active') ?: []; 
          $morning_start = $request->input('morning_start');
-         $morning_end =  $request->input('morning_end');
+         $morning_end =  $request->input('morning_end');          
          $afternoon_start =  $request->input('afternoon_start');
          $afternoon_end =  $request->input('afternoon_end'); 
+ 
+         $errors = [];
+         for($i=0; $i<7; $i++){ 
 
-         for($i=0; $i<7; $i++){
-             
-            //$search = in_array($i, $active);
-             
-            /* if($search){
-                $active = 1;
+            if($morning_start[$i] > $morning_end[$i]){
 
-            }else{
-                $active = 0;
-            }; */
+                $errors [] = "La Hora de inicio del dia $days[$i] del turno MAÑANA no puede ser mayor a la de fin!"; 
+                         
+            }
+
+            if($afternoon_start[$i] > $afternoon_end[$i]){
+
+                $errors [] =  "La Hora de inicio del dia $days[$i] del turno TARDE no puede ser mayor a la de fin!";
+                 
+            }
 
             WorkDay::updateOrCreate(      
                     [
@@ -53,9 +79,15 @@ class ScheduleController extends Controller
                         'afternoon_start'=> $afternoon_start[$i],
                         'afternoon_end'=> $afternoon_end[$i], 
                     ]             
-            ); 
+            );
         }
-            return back();
+ 
+        if(count($errors) > 0)            
+            return back()->with(compact('errors'));
+            
+            $notification = 'Los cambios se guardaron correctamente';
+            return back()->with(compact('notification'));         
+           
         
     }
 

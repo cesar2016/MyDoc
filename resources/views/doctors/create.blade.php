@@ -1,8 +1,11 @@
 @extends('layouts.panel')
 
-@section('content')
+@section('styles')
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">    
+@endsection
 
- 
+@section('content')
 
 <div class="row">
    
@@ -58,6 +61,15 @@
                 <label for="password">Contraseña</label>
                 <input type="text" name="password" class="form-control" value="{{ (Str::random(8)) }}">                
               </div> 
+              <div class="form-group col-md-6">
+                <label for="specialties">Especialidades del Medico</label>
+                <select name="specialties[]" id="specialties" class="form-control selectpicker" data-style="btn-outline-success" title="Seleccione una o varias" multiple >
+                  @foreach ($specialties as $specialtie)
+                  <option value="{{$specialtie->id}}">{{$specialtie->name}}</option>
+                      
+                  @endforeach
+                </select>
+              </div>
             </div>            
             <button type="submit" class="btn btn-primary">Guardar</button>              
           </form>
@@ -67,5 +79,12 @@
     
 </div>
     
+@endsection
+
+@section('scripts')
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>    
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 @endsection
  

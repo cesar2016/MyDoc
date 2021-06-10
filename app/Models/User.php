@@ -43,8 +43,8 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'pivot'
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -62,4 +62,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function specialties()
+    {
+        return $this->belongsToMany(Specialty::class)->withTimestamps();
+    
+    }
 }

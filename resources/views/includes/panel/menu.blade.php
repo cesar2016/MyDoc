@@ -28,10 +28,15 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="./examples/tables.html">
+      <a class="nav-link" href="#">
         <i class="ni ni-calendar-grid-58 text-green"></i> Horarios
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/doctors/seed">
+        <i class="ni ni-button-play text-primary"></i> MySeeders
+      </a>
+    </li> 
   @elseif ( Auth::user()->role == 'doctor')
     <li class="nav-item">
       <a class="nav-link" href="/schedule">
@@ -50,7 +55,7 @@
     </li>       
   @elseif ( Auth::user()->role == 'patien')
   <li class="nav-item">
-    <a class="nav-link" href="/doctors">
+    <a class="nav-link" href="/appointments/create">
       <i class="ni ni-laptop text-default"></i> Reservar turno
     </a>
   </li>
@@ -58,7 +63,7 @@
     <a class="nav-link" href="/patients">
       <i class="ni ni-calendar-grid-58 text-default"></i> Mis turnos
     </a>
-  </li>   
+  </li>    
   @endif
   </ul>
   <hr class="my-3">
