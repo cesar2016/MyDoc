@@ -35,3 +35,6 @@ cesars.pro@gmail.com
  <img src="https://i.postimg.cc/s2mK06gp/listaDoc.png" alt="Build Status">
 </p>
 
+## cesars.pro@gmail.com
+## Linkedin: https://www.linkedin.com/in/cesar-sanchez-dev/
+## Para ver y descargar mi CV: <a href="https://shorten.world/qxnxs"> Clic Aca ...</a>
